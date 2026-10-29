@@ -4,7 +4,6 @@ import xml.etree.ElementTree as ET
 
 arquivo = Path("data/ds460.xls")
 
-
 def ler_planilha_xml(caminho):
     namespace = "{urn:schemas-microsoft-com:office:spreadsheet}"
     raiz = ET.parse(caminho).getroot()
@@ -35,7 +34,6 @@ def ler_planilha_xml(caminho):
 
     return pd.DataFrame(linhas[1:], columns=linhas[0])
 
-
 df = ler_planilha_xml(arquivo)
 quantidade_partes = 2
 
@@ -45,4 +43,3 @@ for i in range(1, quantidade_partes + 1):
     parte = df.iloc[inicio:fim]
     parte.to_excel(f"{arquivo.stem}_parte{i}.xlsx", index=False)
     print(f"Parte {i}: {len(parte)} linhas")
-
